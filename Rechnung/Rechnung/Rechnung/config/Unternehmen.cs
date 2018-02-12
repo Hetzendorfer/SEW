@@ -26,14 +26,5 @@ namespace Rechnung.config
         {
 
         }
-
-        private bool ReadFromXml(string file)
-        {
-            if (File.Exists(file))
-            {
-                return true;
-            }
-            else { return false; }
-        }
     }
 }

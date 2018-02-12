@@ -15,7 +15,7 @@ using System.IO;
 
 namespace createBill
 {
-    class HeaderFooter:PdfPageEventHelper
+    class HeaderFooter : PdfPageEventHelper
     {
         iTextSharp.text.Font FONT = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 18, iTextSharp.text.Font.BOLD);
         BaseFont bfs = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
