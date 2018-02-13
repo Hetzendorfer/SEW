@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.config
             DBConnection dBConnection = DBConnection.Instance();
             if (dBConnection.IsConnect())
             {
-                string query = string.Format("SELECT klient.NAME, klient.STANDORT_ID, klient.BANKVERBINDUNG_ID FROM klient WHERE klient.ID = {0};", this.ID);
+                string query = string.Format("SELECT produkt.Preis, produkt.Name, produkt.UST FROM produkt WHERE produkt.ID = {0};", this.ID);
                 try
                 {
                     var cmd = new MySqlCommand(query, dBConnection.Connection);

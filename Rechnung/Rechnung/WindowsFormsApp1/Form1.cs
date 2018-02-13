@@ -59,8 +59,9 @@ namespace WindowsFormsApp1
             if (!(listBox1.SelectedItem is null))
             {
                 config.Rechnung rechnung = new config.Rechnung(Convert.ToInt32(this.listBox1.SelectedItem));
-                
+
                 //Make PDF
+                pdf.PDF.CreatePDF(rechnung);
             }
         }
     }

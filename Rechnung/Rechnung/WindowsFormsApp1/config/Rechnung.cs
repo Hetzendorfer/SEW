@@ -13,10 +13,12 @@ namespace WindowsFormsApp1.config
         public int ID { get; set; }
         public Unternehmen Unternehmen { get; set; }
         public Käufer Käufer { get; set; }
+        public List<Rechnung_Produkt> Rechnung_Produkte { get; set; }
 
         public Rechnung(int id)
         {
             this.ID = id;
+            this.Rechnung_Produkte = new List<Rechnung_Produkt>();
             this.GetFromDB();
         }
 
@@ -35,6 +37,16 @@ namespace WindowsFormsApp1.config
                     {
                         this.Unternehmen = new Unternehmen(reader.GetInt32(0));
                         this.Käufer = new Käufer(reader.GetInt32(1));
+                    }
+
+                    dBConnection.IsConnect();
+                    query = string.Format("SELECT rechnung_produkt.RECHNUNG_ID, rechnung_produkt.PRODUKT_ID FROM rechnung_produkt WHERE rechnung_produkt.RECHNUNG_ID = {0};", this.ID);
+                    cmd = new MySqlCommand(query, dBConnection.Connection);
+                    reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        this.Rechnung_Produkte.Add(new Rechnung_Produkt(reader.GetInt32(0), reader.GetInt32(1)));
                     }
                 }
                 catch(Exception e)
