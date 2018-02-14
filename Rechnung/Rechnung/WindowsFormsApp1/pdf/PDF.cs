@@ -77,8 +77,8 @@ namespace WindowsFormsApp1.pdf
             PdfPTable table = new PdfPTable(5);
             table.AddCell("Menge");
             table.AddCell("Beschreibung");
-            table.AddCell("Einzelpreis (Brutto)");
-            table.AddCell("Gesamtpreis(Brutto)");
+            table.AddCell("Einzelpreis (Netto)");
+            table.AddCell("Gesamtpreis(Netto)");
             table.AddCell("Ust.");
 
             decimal gesamtsummeBrutto = 0, gesamtsummeNetto = 0;
@@ -86,11 +86,11 @@ namespace WindowsFormsApp1.pdf
             {
                 table.AddCell(item.Menge.ToString());
                 table.AddCell(item.Produkt.Name);
-                table.AddCell((item.Produkt.Preis * (1 + item.Produkt.UST)).ToString());
-                table.AddCell((item.Menge * item.Produkt.Preis * (1 + item.Produkt.UST)).ToString());
+                table.AddCell((item.Produkt.Preis).ToString());
+                table.AddCell((item.Menge * item.Produkt.Preis * (1 - item.Rabatt)).ToString());
                 table.AddCell(item.Produkt.UST.ToString());
-                gesamtsummeBrutto += item.Menge * item.Produkt.Preis * (1 + item.Produkt.UST);
-                gesamtsummeNetto += item.Menge* item.Produkt.Preis;
+                gesamtsummeBrutto += item.Menge * item.Produkt.Preis * (1 + item.Produkt.UST) * (1 - item.Rabatt);
+                gesamtsummeNetto += item.Menge* item.Produkt.Preis * (1 - item.Rabatt);
             }
 
             /*table.AddCell("");
@@ -115,7 +115,6 @@ namespace WindowsFormsApp1.pdf
 
             Font f = new Font();
             f.Size = 10f;
-
             Paragraph parGesamtBrutto = new Paragraph("Gesamtsumme Brutto: " + gesamtsummeBrutto.ToString() + " €", f);
             Paragraph parGesamtNetto = new Paragraph("Netto: " + gesamtsummeNetto.ToString() + " €", f);
             Paragraph parUST = new Paragraph("Ust.: " + (gesamtsummeBrutto - gesamtsummeNetto).ToString() + " €", f);
@@ -128,6 +127,22 @@ namespace WindowsFormsApp1.pdf
             doc.Add(parGesamtBrutto);
             doc.Add(parGesamtNetto);
             doc.Add(parUST);
+
+
+            PdfContentByte canvas = writer.DirectContent;
+            ColumnText.ShowTextAligned(
+              canvas, Element.ALIGN_CENTER,
+              new Phrase("Bankname: " + Rechnung.Unternehmen.Bankverbindung.Bankname, f), 100, 80, 0
+            );
+            ColumnText.ShowTextAligned(
+              canvas, Element.ALIGN_CENTER,
+              new Phrase("Kontonummer: " + Rechnung.Unternehmen.Bankverbindung.Kontonummer, f), 100, 65, 0
+            );
+            ColumnText.ShowTextAligned(
+              canvas, Element.ALIGN_CENTER,
+              new Phrase("IBAN: " + Rechnung.Unternehmen.Bankverbindung.IBAN + "        " + "BIC: " + Rechnung.Unternehmen.Bankverbindung.BIC, f), 100, 50, 0
+            );
+
             doc.Close();
         }
         static private void CreateUnternehmenData(Document doc)
