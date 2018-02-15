@@ -8,7 +8,7 @@ namespace RDP_2012_13_Aufgabe1
 {
     class Abteilung
     {
-        private List<Arzt> arztListe;
+        public List<Arzt> arztListe;
 
         public int ID { get; set; }
         public string Bezeichnung { get; set; }
@@ -34,8 +34,10 @@ namespace RDP_2012_13_Aufgabe1
                 Type t2 = y.GetType();
                 if (t1 == typeof(LeitenderArzt) && t2 == typeof(LeitenderArzt))
                 {
-                    return ((LeitenderArzt) x).Funktion.CompareTo(((LeitenderArzt) y).Funktion);
+                    return ((LeitenderArzt)x).Funktion.CompareTo(((LeitenderArzt)y).Funktion);
                 }
+                else if (t1 == typeof(LeitenderArzt) && t2 == typeof(Assistenzarzt))
+                    return -1;
                 else if (t1 == typeof(LeitenderArzt) && t2 != typeof(Assistenzarzt))
                     return -1;
                 else if (t1 != typeof(LeitenderArzt) && t2 == typeof(Assistenzarzt))

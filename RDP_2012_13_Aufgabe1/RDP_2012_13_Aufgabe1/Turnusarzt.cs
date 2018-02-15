@@ -16,7 +16,11 @@ namespace RDP_2012_13_Aufgabe1
 
         public override string ToString()
         {
-            return "Turnusarzt: " + this.Vorname + " " + this.Nachname + "\n";
+            string visiten = " Visiten: ";
+            foreach (DateTime item in this.visiten)
+                visiten += item.ToShortDateString() + " ";
+            
+            return "Turnusarzt: " + this.Vorname + " " + this.Nachname + visiten + "[" + this.Dauer.ToString() + "]" + "\n";
         }
     }
 }

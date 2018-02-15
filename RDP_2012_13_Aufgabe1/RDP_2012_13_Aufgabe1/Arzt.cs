@@ -8,7 +8,7 @@ namespace RDP_2012_13_Aufgabe1
 {
     abstract class Arzt
     {
-        private List<DateTime> visiten;
+        public List<DateTime> visiten;
 
         public int ID { get; set; }
         public string Nachname { get; set; }

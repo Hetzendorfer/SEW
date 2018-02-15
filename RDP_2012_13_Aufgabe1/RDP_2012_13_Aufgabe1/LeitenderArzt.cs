@@ -16,13 +16,11 @@ namespace RDP_2012_13_Aufgabe1
 
         public override string ToString()
         {
-            string s = "";
-            switch (s)
-            {
-                default:
-                    break;
-            }
-            return this.Funktion + ": " + this.Vorname + " " + this.Nachname + "\n";
+            string visiten = " Visiten: ";
+            foreach (DateTime item in this.visiten)
+                visiten += item.ToShortDateString() + " ";
+
+            return this.Funktion + ": " + this.Vorname + " " + this.Nachname + visiten + "\n";
             
         }
 
