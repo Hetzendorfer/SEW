@@ -15,5 +15,28 @@ namespace CustomerLibrary
         public string Address { get; set; }
 
         public abstract void Validate();
+
+        public ICustomerInterface.ICustomer Clone()
+        {
+            return (ICustomerInterface.ICustomer)this.MemberwiseClone();
+        }
+
+        private ICustomerInterface.IValidationStrategy<ICustomerInterface.ICustomer> _ValidationType = null;
+        public CustomerBase(ICustomerInterface.IValidationStrategy<ICustomerInterface.ICustomer> _Validate)
+        {
+            _ValidationType = _Validate;
+        }
+        public ICustomerInterface.IValidationStrategy<ICustomerInterface.ICustomer> ValidationType
+        {
+            get
+            {
+                return _ValidationType;
+            }
+            set
+            {
+                _ValidationType = value;
+            }
+        }
     }
+}
 }

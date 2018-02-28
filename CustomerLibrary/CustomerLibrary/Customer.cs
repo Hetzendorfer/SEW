@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ICustomerInterface;
 
 namespace CustomerLibrary
 {
     public class Customer : CustomerBase
     {
+        public Customer() : base(new CustomerValidation())
+        {
+        }
 
         public override void Validate()
         {

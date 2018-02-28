@@ -22,8 +22,7 @@ namespace WindowsCustomerUI
         private void AddButton_Click(object sender, EventArgs e)
         {
             ICustomer icust = null;
-            CustomerFactory factory = new CustomerFactory();
-            icust = factory.Create(CustomerTypeComboBox.SelectedIndex);
+            icust = CustomerFactory.Create(CustomerTypeComboBox.SelectedIndex);
 
             icust.CustomerName = CustomerNameTextBox.Text;
             icust.Address = AdressTextBox.Text;

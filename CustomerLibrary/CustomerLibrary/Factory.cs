@@ -7,19 +7,29 @@ using ICustomerInterface;
 
 namespace CustomerLibrary
 {
-    public class CustomerFactory
+    static public class CustomerFactory
     {
-        private List<ICustomer> customers = new List<ICustomer>();
+        
+        static private Lazy<List<ICustomer>> customers = null;
 
-        public CustomerFactory()
+        static public ICustomer Create(int CustomerType)
         {
-            customers.Add(new Lead());
-            customers.Add(new Customer());
+            if (customers == null)
+                LoadCustomers();
+            return customers.Value[CustomerType].Clone();
         }
 
-        public ICustomer Create(int CustomerType)
+        static CustomerFactory()
         {
-            return customers[CustomerType];
+            customers = new Lazy<List<ICustomer>>(() => LoadCustomers());
+        }
+        
+        static public List<ICustomer> LoadCustomers()
+        {
+            List<ICustomer> cust = new List<ICustomer>();
+            cust.Add(new Lead());
+            cust.Add(new Customer());
+            return cust;
         }
     }
 }

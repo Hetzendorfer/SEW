@@ -42,8 +42,10 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerBase.cs" />
+    <Compile Include="CustomerValidation.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="Lead.cs" />
+    <Compile Include="LeadValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
