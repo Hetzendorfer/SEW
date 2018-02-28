@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDP_2012_13_Aufgabe1", "RDP_2012_13_Aufgabe1\RDP_2012_13_Aufgabe1.csproj", "{FBB9537E-311B-4DA2-8FB9-24559A46922F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDP_2012_13_Aufgabe1Tests", "RDP_2012_13_Aufgabe1Tests\RDP_2012_13_Aufgabe1Tests.csproj", "{93595E3D-EE1C-4645-B34D-8FC3D406A23B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FBB9537E-311B-4DA2-8FB9-24559A46922F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBB9537E-311B-4DA2-8FB9-24559A46922F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBB9537E-311B-4DA2-8FB9-24559A46922F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93595E3D-EE1C-4645-B34D-8FC3D406A23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93595E3D-EE1C-4645-B34D-8FC3D406A23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93595E3D-EE1C-4645-B34D-8FC3D406A23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93595E3D-EE1C-4645-B34D-8FC3D406A23B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

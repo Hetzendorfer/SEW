@@ -7,10 +7,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RDP_2012_13_Aufgabe1.Unittest
 {
-    [TestClass]
+    [TestClass()]
     public class Test1
     {
-        [TestMethod]
+        [TestMethod()]
         public void SortTest()
         {
             Turnusarzt t = new Turnusarzt(1, "Muamemr", "Keskin", 10);
@@ -29,12 +29,12 @@ namespace RDP_2012_13_Aufgabe1.Unittest
             ab.arztHinzufuegen(l2);
 
 
-
             Console.WriteLine(ab.ToString());
             Assert.AreEqual(ab.arztListe[0], l);
+            Assert.AreEqual(ab.arztListe[5].GetType(), typeof(Turnusarzt));
         }
 
-        [TestMethod]
+        [TestMethod()]
         public void Visiten()
         {
             LeitenderArzt l = new LeitenderArzt(2, "Kevin", "Hetzendorfer", Funktion.Oberarzt);
@@ -44,5 +44,22 @@ namespace RDP_2012_13_Aufgabe1.Unittest
             string date = l.visiten[0].ToShortDateString();
             Assert.AreEqual(date, "12.12.2012");
         }
+
+        [TestMethod()]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void UnimplementedMethods1()
+        {
+            LeitenderArzt la = new LeitenderArzt(1, "Kevin", "Hetzendorfer", Funktion.Oberarzt);
+            la.operieren();
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void UnimplementedMethods2()
+        {
+            LeitenderArzt la = new LeitenderArzt(1, "Kevin", "Hetzendorfer", Funktion.Oberarzt);
+            la.PatientAufnehmen();
+        }
+
     }
 }

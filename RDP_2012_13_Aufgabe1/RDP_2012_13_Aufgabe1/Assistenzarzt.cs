@@ -30,8 +30,11 @@ namespace RDP_2012_13_Aufgabe1
             string visiten = " Visiten: ";
             foreach (DateTime item in this.visiten)
                 visiten += item.ToShortDateString() + " ";
+            string fertig = "fertig";
+            if (!AusbildungAbgeschlossen)
+                fertig = "in Ausbildung";
 
-            return "Assistenzarzt: " + this.Vorname + " " + this.Nachname + visiten + "\n";
+            return "Ass. Arzt: " + this.Vorname + " " + this.Nachname + visiten +  "[" + fertig + "]" + "\n";
         }
     }
 }

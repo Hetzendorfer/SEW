@@ -20,7 +20,7 @@ namespace RDP_2012_13_Aufgabe1
             foreach (DateTime item in this.visiten)
                 visiten += item.ToShortDateString() + " ";
             
-            return "Turnusarzt: " + this.Vorname + " " + this.Nachname + visiten + "[" + this.Dauer.ToString() + "]" + "\n";
+            return "Turnusarzt: " + this.Vorname + " " + this.Nachname + visiten + "[" + this.Dauer.ToString() + " Monate]" + "\n";
         }
     }
 }
