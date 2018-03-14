@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3D90FEDB-6778-4734-9144-5488D3E4A1AA}</ProjectGuid>
+    <ProjectGuid>{72F655BC-3888-4CCF-A817-9CE46683030E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Vector</RootNamespace>
-    <AssemblyName>Vector</AssemblyName>
+    <RootNamespace>Convolution</RootNamespace>
+    <AssemblyName>Convolution</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,10 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Interface1.cs" />
-    <Compile Include="MyVector.cs" />
-    <Compile Include="MyVectorClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

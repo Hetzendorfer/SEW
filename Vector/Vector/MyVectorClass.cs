@@ -38,6 +38,11 @@ namespace Vector
 
         }
 
+        public void Methode1()
+        {
+            Console.WriteLine("asd");
+        }
+
         public static MyVectorClass operator +(MyVectorClass left, MyVectorClass right)
         {
             MyVectorClass vector = new MyVectorClass();
