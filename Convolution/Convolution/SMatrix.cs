@@ -24,13 +24,11 @@ namespace Convolution
             int[,] arr = new int[links.Dimension.GetLength(0) - rechts.Dimension.GetLength(0) + 1, links.Dimension.GetLength(1) - rechts.Dimension.GetLength(1) + 1];
             
 
-            for (int x = 0; x < arr.GetLength(1) - arr.GetLength(1); x++)
-            {
-                for (int y = 0; y < arr.GetLength(0) - arr.GetLength(0); y++)
-                {
-
-                }
-            }
+            for (int x = 0; x < arr.GetLength(1); x++)
+                for (int y = 0; y < arr.GetLength(0); y++)
+                    for (int i = 0; i < rechts.Dimension.GetLength(1); i++)
+                        for (int j = 0; j < rechts.Dimension.GetLength(0); j++)
+                            arr[y, x] += links.Dimension[y + j, x + i] * rechts.Dimension[j, i];
 
 
             SMatrix smatrix = new SMatrix();
