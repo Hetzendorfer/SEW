@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Convolution
 {
-    class SMatrix
+    public class SMatrix
     {
         public int[,] Dimension { get; set; }
 
