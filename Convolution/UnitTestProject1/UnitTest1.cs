@@ -53,6 +53,7 @@ namespace UnitTestProject1
 
             Assert.AreEqual(asd.Dimension.GetLength(0), 6);
             Assert.AreEqual(asd.Dimension.GetLength(1), 8);
+            Assert.AreEqual(asd.Dimension[0, 0], 54);
         }
 
     

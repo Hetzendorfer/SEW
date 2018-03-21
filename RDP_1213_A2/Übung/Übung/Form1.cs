@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Übung.data;
 
 namespace Übung
 {
@@ -15,6 +16,14 @@ namespace Übung
         public Form1()
         {
             InitializeComponent();
+
+            Patient p = new Patient(8, "Hetzendorfer", "Kevin", "123456");
+            Behandlung b = new Behandlung("Kur", 100, DateTime.Now);
+            p.Behandlungen.Add(b);
+            Datenbank db = Datenbank.GetInstance();
+            db.Open();
+            p.SaveToDB(db);
+            db.Close();
         }
     }
 }
