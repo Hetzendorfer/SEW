@@ -16,7 +16,7 @@ namespace Übung
 
         private Datenbank()
         {
-            this.Connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Transfer.accdb;Persist Security Info=False;");
+            this.Connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=./../../../../Transfer.accdb;Persist Security Info=False;");
         }
 
         static public Datenbank GetInstance()
@@ -28,7 +28,10 @@ namespace Übung
             return instance;
         }
 
-
+        public bool isOpen()
+        {
+            return this.Connection.State == ConnectionState.Open ? true : false;
+        }
 
         public void Open()
         {

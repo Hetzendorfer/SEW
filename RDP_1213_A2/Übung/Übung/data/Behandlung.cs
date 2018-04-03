@@ -22,10 +22,18 @@ namespace Übung.data
             this.Datum = datum;
         }
 
+        public Behandlung(string bezeichnung, int dauer, DateTime datum, long id) : this(bezeichnung, dauer, datum)
+        {
+            this.ID = id;
+        }
+
         public void SaveToDB(Datenbank db)
         {
             OleDbCommand getMaxID = new OleDbCommand("SELECT MAX(id) as id from behandlung");
             getMaxID.Connection = db.Connection;
+            if (!db.isOpen())
+                db.Open();
+
             var id = getMaxID.ExecuteScalar();
             this.ID = id.GetType() == typeof(int)? (int)id + 1 : 1;
             OleDbCommand cmd = new OleDbCommand($"INSERT INTO behandlung (id, bezeichnung) VALUES ({this.ID}, '{this.Bezeichnung}')");

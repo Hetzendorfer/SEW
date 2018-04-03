@@ -30,6 +30,8 @@ namespace Übung.data
         {
             string query = $"INSERT INTO patient (id, nachname, vorname, svnr) VALUES ({this.ID}, '{this.Nachname}', '{this.Vorname}', '{this.SVNR}')";
             OleDbCommand cmd = new OleDbCommand(query, db.Connection);
+            if (!db.isOpen())
+                db.Open();
             cmd.ExecuteScalar();
 
             foreach (Behandlung item in this.Behandlungen)
