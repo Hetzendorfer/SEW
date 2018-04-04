@@ -20,6 +20,7 @@ namespace Übung
             InitializeComponent();
             openFileDialog.CheckFileExists = true;
             openFileDialog.CheckPathExists = true;
+            openFileDialog.Filter = "xml files (*.xml)|*.xml";
 
             /*Patient p = new Patient(8, "Hetzendorfer", "Kevin", "123456");
             Behandlung b = new Behandlung("Kur", 100, DateTime.Now);
@@ -140,6 +141,11 @@ namespace Übung
         {
             if (SQL.DeleteAll())
                 MessageBox.Show("Inhalte aller Tabellen wurden gelöscht");
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Datenbank.GetInstance().Close();
         }
     }
 }

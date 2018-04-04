@@ -40,8 +40,8 @@ namespace Übung
         {
             List<Patient> patienten = new List<Patient>();
             Datenbank db = Datenbank.GetInstance();
-            //try
-            //{
+            try
+            {
                 OleDbCommand cmd = new OleDbCommand("SELECT id, vorname, nachname, svnr FROM patient;");
                 cmd.Connection = db.Connection;
                 if (!db.isOpen())
@@ -55,11 +55,11 @@ namespace Übung
                     patienten.Add(p);
                 }
 
-            //}
-            //catch(Exception ex)
-            //{
+            }
+            catch(Exception ex)
+            {
 
-            //}
+            }
 
             return patienten;
         }
