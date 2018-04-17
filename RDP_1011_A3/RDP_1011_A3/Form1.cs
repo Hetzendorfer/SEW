@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace RDP_1011_A3
 {
@@ -35,6 +36,7 @@ namespace RDP_1011_A3
         public bool GameOver = false;
 
         List<Apfel> Äpfel = new List<Apfel>();
+        Thread äpfelAdd = null;
 
         public Form1()
         {
@@ -45,11 +47,31 @@ namespace RDP_1011_A3
             //CreateRandomApfel();
             //Äpfel.Add(new Apfel(3, startRectangleTop + LineTop + 220, 54, startRectangleLeft + LineLeft * 3, startRectangleTop + LineTop));
             timer1.Start();
+
+            äpfelAdd = new Thread(() =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        System.Threading.Thread.Sleep(1000);
+                        if (Äpfel.Count < 3)
+                            this.CreateRandomApfel();
+                    }
+                    catch(ThreadAbortException ex)
+                    {
+
+                    }
+                }
+            });
+
+            äpfelAdd.Start();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
             if (!GameOver)
             {
                 Pen BluePen = new Pen(Color.Blue, 1);
@@ -109,9 +131,6 @@ namespace RDP_1011_A3
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if(Äpfel.Count() < 3)
-                CreateRandomApfel();
-
             foreach (Apfel item in Äpfel)
             {
                 bool b = item.Move();
@@ -136,12 +155,22 @@ namespace RDP_1011_A3
             Invalidate();
         }
 
+        
+
         private void CreateRandomApfel()
         {
             Random rnd = new Random();
             int position = rnd.Next(1, 8);
 
-            Äpfel.Add(new Apfel(position, startRectangleTop + LineTop + 220, 54, startRectangleLeft + LineLeft * position, startRectangleTop + LineTop));
+            Äpfel.Add(new Apfel(position, startRectangleTop + LineTop + 220, 6, startRectangleLeft + LineLeft * position, startRectangleTop + LineTop));
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //äpfelAdd.Suspend();
+            äpfelAdd.Abort();
+            äpfelAdd.Join();
+            timer1.Stop();
         }
     }
 }
