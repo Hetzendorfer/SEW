@@ -44,6 +44,18 @@
   <ItemGroup>
     <Compile Include="Collection\EigeneCollection.cs" />
     <Compile Include="Collection\Test.cs" />
+    <Compile Include="Generic\Constraint.cs" />
+    <Compile Include="Generic\GenericStack.cs" />
+    <Compile Include="Generic\GenerischeMethode.cs" />
+    <Compile Include="Generic\Stack.cs" />
+    <Compile Include="Inheritance\BaseClass.cs" />
+    <Compile Include="Inheritance\ChildClass.cs" />
+    <Compile Include="Kovarianz\BaseClass.cs" />
+    <Compile Include="Kovarianz\ChildClass1.cs" />
+    <Compile Include="Kovarianz\ChildClass2.cs" />
+    <Compile Include="Kovarianz\Do.cs" />
+    <Compile Include="Kovarianz\InterfaceA.cs" />
+    <Compile Include="Kovarianz\KovarianzClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
