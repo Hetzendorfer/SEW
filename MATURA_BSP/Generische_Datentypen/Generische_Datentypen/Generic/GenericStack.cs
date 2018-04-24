@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Generische_Datentypen.Generic
 {
-    class Stack
+    class GenericStack<T>
     {
         private readonly int size;
-        private Object[] elements;
+        private T[] elements;
         private int pointer = 0;
 
-        public Stack(int size)
+        public GenericStack(int size)
         {
             this.size = size;
-            this.elements = new Object[size];
+            this.elements = new T[size];
         }
 
-        public void Push(object element)
+        public void Push(T element)
         {
             if (pointer >= this.size)
                 throw new StackOverflowException();
@@ -26,7 +26,7 @@ namespace Generische_Datentypen.Generic
             pointer++;
         }
 
-        public object Pop()
+        public T Pop()
         {
             pointer--;
             if (pointer >= 0)
