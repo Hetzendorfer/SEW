@@ -7,7 +7,7 @@ using System.Net.Http;
 
 namespace Async_Await
 {
-    class Webserver
+    class Webserver<T> where T : new()
     {
 
         public void MethodA(string s)

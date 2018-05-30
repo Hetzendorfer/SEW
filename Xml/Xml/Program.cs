@@ -38,6 +38,9 @@ namespace Xml
                     Console.WriteLine("\t\t" + name.InnerText);
                 }
             }
+
+
+            
             
             root.AppendChild(doc.CreateElement("Person"));
             doc.Save("file1.xml");

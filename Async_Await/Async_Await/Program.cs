@@ -22,6 +22,19 @@ namespace Async_Await
             Start();
             Console.WriteLine("Ende Main ...");
             Console.ReadLine();
+
+            try
+            {
+                Task t = new Task(() =>
+                {
+                    throw new Exception();
+                });
+
+            }
+            catch(Exception e) when (e is Object)
+            {
+
+            }
         }
 
         static async void Start()

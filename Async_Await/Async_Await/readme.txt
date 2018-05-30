@@ -36,6 +36,8 @@ mit await gespeichert werden.
 
 
 Web-Server Kommunikation
+Es wird Text geschickt
+
 4 Möglichkeiten:
 	Client zu Server (Request und Response)
 	Server zu Client (Solicit-Response)
