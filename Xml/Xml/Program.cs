@@ -15,6 +15,9 @@ namespace Xml
             XmlDocument doc = new XmlDocument();
             doc.Load(XmlReader.Create("file.xml"));
 
+            XmlNode root = doc.DocumentElement;
+
+
             XmlNodeList nodes = doc.SelectNodes(@"//Person");
 
             foreach (XmlNode item in nodes)
@@ -35,6 +38,9 @@ namespace Xml
                     Console.WriteLine("\t\t" + name.InnerText);
                 }
             }
+            
+            root.AppendChild(doc.CreateElement("Person"));
+            doc.Save("file1.xml");
         }
     }
 }
